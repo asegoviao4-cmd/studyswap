@@ -32,7 +32,7 @@ window.obtenerMateriales = async function() {
     snapshot.forEach((doc) => {
         materiales.push(doc.data());
     });
-
+console.log(materiales);
     return materiales;
 }
 export { app };
