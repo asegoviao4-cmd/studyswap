@@ -24,7 +24,9 @@ window.guardarMaterial = async function(material) {
     }
 }
 
-window.obtenerMateriales = async function() {
+export { app };
+
+export async function obtenerMateriales() {
     const snapshot = await getDocs(collection(db, "materiales"));
 
     let materiales = [];
@@ -32,7 +34,6 @@ window.obtenerMateriales = async function() {
     snapshot.forEach((doc) => {
         materiales.push(doc.data());
     });
-console.log(materiales);
+
     return materiales;
 }
-export { app };
