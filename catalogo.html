@@ -4,38 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo - StudySwap</title>
-<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <header class="header">
-    <h1>📚 StudySwap</h1>
+<h1>📚 StudySwap</h1>
 </header>
+
 <div style="text-align:center; margin:20px;">
 
-    <a href="publicar.html">
-        <button>📚 Publicar Material</button>
-    </a>
+<a href="publicar.html">
+<button>📚 Publicar Material</button>
+</a>
 
-    <button onclick="cerrarSesion()">
-        🚪 Cerrar sesión
-    </button>
+<button onclick="cerrarSesion()">
+🚪 Cerrar sesión
+</button>
 
-    <br><br>
+<br><br>
 
-    <input
-        id="busqueda"
-        type="text"
-        placeholder="Buscar material..."
-        style="width:80%;padding:10px;margin:10px;">
+<input
+id="busqueda"
+type="text"
+placeholder="Buscar material..."
+style="width:80%;padding:10px;margin:10px;"
+>
 
 </div>
 
 <div class="catalogo" id="catalogo"></div>
 
-<script type="module" src="js/firebase.js"></script>
-
 <script type="module">
+
+import { obtenerMateriales } from "./js/firebase.js";
 
 let materiales = await obtenerMateriales();
 
@@ -43,41 +47,43 @@ let catalogo = document.getElementById("catalogo");
 
 materiales.forEach(material => {
 
-   catalogo.innerHTML += `
+catalogo.innerHTML += `
 <div class="card">
-    <h3>${material.titulo}</h3>
-    <p>${material.descripcion}</p>
-    <p>Categoría: ${material.categoria}</p>
-    <p>S/ ${material.precio}</p>
-    <a href="${material.pdf}" class="btn-pdf" target="_blank">
-    📄 Descargar PDF
+<h3>${material.titulo}</h3>
+<p>${material.descripcion}</p>
+<p>Categoría: ${material.categoria}</p>
+<p>S/ ${material.precio}</p>
+
+<a href="${material.pdf}" target="_blank">
+<button>📄 Descargar PDF</button>
 </a>
+
 </div>
 `;
+
 });
-document.getElementById("busqueda").addEventListener("keyup", function() {
 
-    let texto = this.value.toLowerCase();
+document.getElementById("busqueda").addEventListener("keyup", function () {
 
-    let cards = document.querySelectorAll(".card");
+let texto = this.value.toLowerCase();
 
-    cards.forEach(card => {
+let cards = document.querySelectorAll(".card");
 
-        if (card.innerText.toLowerCase().includes(texto)) {
+cards.forEach(card => {
 
-            card.style.display = "block";
+if (card.innerText.toLowerCase().includes(texto)) {
+card.style.display = "block";
+} else {
+card.style.display = "none";
+}
 
-        } else {
-
-            card.style.display = "none";
-
-        }
-
-    });
+});
 
 });
 
 </script>
+
 <script type="module" src="js/auth.js"></script>
+
 </body>
 </html>
