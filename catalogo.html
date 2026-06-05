@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo - StudySwap</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
@@ -39,7 +39,7 @@ style="width:80%;padding:10px;margin:10px;"
 
 <script type="module">
 
-import { obtenerMateriales } from "./js/firebase.js";
+import { obtenerMateriales } from "./firebase.js";
 
 let materiales = await obtenerMateriales();
 
@@ -83,7 +83,7 @@ card.style.display = "none";
 
 </script>
 
-<script type="module" src="js/auth.js"></script>
+<script type="module" src="auth.js"></script>
 
 </body>
 </html>
