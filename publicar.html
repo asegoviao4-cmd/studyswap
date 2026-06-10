@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Publicar Material</title>
-<link rel="stylesheet" href="estilo.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicar Material - StudySwap</title>
 
+    <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
 
-<header class="header">
     <h1>📚 Publicar Material</h1>
-</header>
 
-<div class="container">
+    <input
+        type="text"
+        id="titulo"
+        placeholder="Título del material"
+    >
 
-    <input id="titulo" type="text" placeholder="Título del material">
+    <br><br>
 
-    <textarea id="descripcion" placeholder="Descripción"></textarea>
+    <textarea
+        id="descripcion"
+        placeholder="Descripción"
+    ></textarea>
 
-    <input id="precio" type="number" placeholder="Precio">
+    <br><br>
 
-    <select id="categoria">
-        <option>Ingeniería</option>
-        <option>Medicina</option>
-        <option>Derecho</option>
-        <option>Administración</option>
-    </select>
+    <input
+        type="number"
+        id="precio"
+        placeholder="Precio"
+    >
 
-    <input id="pdf" type="file" accept=".pdf">
+    <br><br>
+
+    <input
+        type="text"
+        id="categoria"
+        placeholder="Categoría"
+    >
+
+    <br><br>
+
+    <input
+        type="file"
+        id="pdf"
+        accept=".pdf"
+    >
+<br><br>
+
+<input
+    type="text"
+    id="linkpdf"
+    placeholder=:"Pega aquí el enlace de Google Drive"
+/>
 
     <button onclick="publicar()">
-        Publicar
+        📤 Publicar Material
     </button>
 
-</div>
+    <br><br>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    <a href="catalogo.html">
+        <button>📚 Ver Catálogo</button>
+    </a>
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAEHwoa9Nns1PaBdodk-ktIFw2APHI9V60",
-    authDomain: "studyswap-3d053.firebaseapp.com",
-    projectId: "studyswap-3d053",
-    storageBucket: "studyswap-3d053.firebasestorage.app",
-    appId: "1:765373094250:web:17a86d99e1ba2a6dadad13"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-onAuthStateChanged(auth, (user) => {
-
-    if (!user) {
-        alert("No has iniciado sesión");
-        window.location.href = "login.html";
-    }
-
-});
-</script>
-
-<script src="js/app.js"></script>
-<script type="module" src="firebase.js"></script>
+    <script type="module" src="js/firebase.js"></script>
 
 </body>
 </html>
